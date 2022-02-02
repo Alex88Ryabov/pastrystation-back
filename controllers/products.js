@@ -42,6 +42,8 @@ module.exports.getAll = (req, res) => {
 module.exports.create = (req, res) => {   // request, response
     try {
 
+        const unit = +req.body.categoryId === 1 ? 'кг' : ''
+
         const product = {
             name: req.body.name,
             imageName: req.body.image.fileName,
@@ -49,7 +51,8 @@ module.exports.create = (req, res) => {   // request, response
             price: req.body.price,
             categoryId: req.body.categoryId,
             description: req.body.description,
-            info: req.body.info
+            info: req.body.info,
+            unit
         };
 
         Product.create(product)
@@ -78,6 +81,8 @@ module.exports.remove = (req, res) => {   // request, response
 
 module.exports.update = (req, res) => {   // request, response
 
+    const unit = +req.body.categoryId === 1 ? 'кг' : ''
+
     const updated = {
         name: req.body.name,
         imageName: req.body.image.fileName,
@@ -85,7 +90,8 @@ module.exports.update = (req, res) => {   // request, response
         price: req.body.price,
         categoryId: req.body.categoryId,
         description: req.body.description,
-        info: req.body.info
+        info: req.body.info,
+        unit
     }
     try {
         Product.findOne({where: {id: req.params.id}})

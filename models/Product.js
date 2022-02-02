@@ -30,6 +30,9 @@ module.exports = db.sequelize.define(
         },
         info: {
             type: Sequelize.JSON
+        },
+        unit: {
+            type: Sequelize.STRING
         }
     },
     {
