@@ -13,11 +13,8 @@ module.exports = db.sequelize.define(
         name: {
             type: Sequelize.STRING
         },
-        imageName: {
+        imageSrc: {
             type: Sequelize.STRING
-        },
-        imageFile: {
-            type: Sequelize.TEXT
         },
         categoryId: {
             type: Sequelize.INTEGER

@@ -8,6 +8,7 @@ const app = express();
 
 const categoriesRoutes = require('./routes/categories');
 const productsRoutes = require('./routes/products');
+const aboutUsRoutes = require('./routes/about-us');
 
 const authRoutes = require('./routes/auth');
 // const Settings = require('./models/Settings');
@@ -26,6 +27,7 @@ db.sequelize.authenticate()
 
 app.use(passport.initialize());
 require('./middleware/passport')(passport);
+app.use('/uploads', express.static('uploads'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,6 +35,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/categories", categoriesRoutes);
 app.use("/api/products", productsRoutes);
+app.use("/api/about-us", aboutUsRoutes);
 
 
 // var transporter = nodemailer.createTransport({

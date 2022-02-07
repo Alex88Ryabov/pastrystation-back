@@ -31,11 +31,9 @@ module.exports.getAll = (req, res) => {
 
 module.exports.create = (req, res) => {   // request, response
     try {
-
         const categoryName = {
             name: req.body.name,
-            imageName: req.body.image.fileName,
-            imageFile: req.body.image.file
+            imageSrc: req.file ? req.file.path : ''
         };
 
         Category.create(categoryName)
@@ -46,7 +44,6 @@ module.exports.create = (req, res) => {   // request, response
                 console.log(error)
             })
     } catch (error) {
-
     }
 };
 
@@ -67,8 +64,7 @@ module.exports.update = (req, res) => {   // request, response
 
     const updated = {
         name: req.body.name,
-        imageName: req.body.image.fileName,
-        imageFile: req.body.image.file
+        imageSrc: req.file ? req.file.path : ''
     }
     try {
         Category.findOne({where: {id: req.params.id}})

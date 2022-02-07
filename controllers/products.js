@@ -46,8 +46,7 @@ module.exports.create = (req, res) => {   // request, response
 
         const product = {
             name: req.body.name,
-            imageName: req.body.image.fileName,
-            imageFile: req.body.image.file,
+            imageSrc: req.file ? req.file.path : '',
             price: req.body.price,
             categoryId: req.body.categoryId,
             description: req.body.description,
@@ -85,12 +84,11 @@ module.exports.update = (req, res) => {   // request, response
 
     const updated = {
         name: req.body.name,
-        imageName: req.body.image.fileName,
-        imageFile: req.body.image.file,
+        imageSrc: req.file ? req.file.path : '',
         price: req.body.price,
         categoryId: req.body.categoryId,
         description: req.body.description,
-        info: req.body.info,
+        info: JSON.parse(req.body.info),
         unit
     }
     try {
