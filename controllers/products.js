@@ -50,7 +50,7 @@ module.exports.create = (req, res) => {   // request, response
             price: req.body.price,
             categoryId: req.body.categoryId,
             description: req.body.description,
-            info: req.body.info,
+            info: JSON.parse(req.body.info),
             unit
         };
 
@@ -81,10 +81,10 @@ module.exports.remove = (req, res) => {   // request, response
 module.exports.update = (req, res) => {   // request, response
 
     const unit = +req.body.categoryId === 1 ? 'кг' : ''
-
+    const imageSrc = req.file ? req.file.path : req.body.image ? req.body.image : '';
     const updated = {
         name: req.body.name,
-        imageSrc: req.file ? req.file.path : '',
+        imageSrc,
         price: req.body.price,
         categoryId: req.body.categoryId,
         description: req.body.description,
