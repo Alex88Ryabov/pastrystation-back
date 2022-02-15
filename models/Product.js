@@ -14,7 +14,7 @@ module.exports = db.sequelize.define(
             type: Sequelize.STRING
         },
         imageSrc: {
-            type: Sequelize.STRING
+            type: Sequelize.JSON
         },
         categoryId: {
             type: Sequelize.INTEGER
